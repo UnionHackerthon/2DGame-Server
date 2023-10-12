@@ -34,6 +34,23 @@ app.post('/score', (req, res) => {
   res.send(result);
 });
 
+app.get('/score/:id', (req, res) => {
+  console.log('id: ' + req.params.id);
+  let user = users.find((x) => x.id == req.params.id);
+  if (user === undefined) {
+    res.send({
+      cmd: 1103,
+      message: '잘못된 id입니다.',
+    });
+  } else {
+    res.send({
+      cmd: 1102,
+      message: '',
+      result: user,
+    });
+  }
+});
+
 app.listen(3000, () => {
   console.log('Server Running at 3000 Port');
 });

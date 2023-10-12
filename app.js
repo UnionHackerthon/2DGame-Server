@@ -22,13 +22,11 @@ app.post('/score', (req, res) => {
 
     result.cmd = 1001;
     result.message = '점수가 신규 등록되었습니다.';
-  } else if (score > user.score) {
+  } else {
     user.score = score;
     result.cmd = 1002;
     result.message = '점수가 갱신 되었습니다.';
-  } else {
-    result.cmd = 1003;
-  }
+  } 
 
   console.log(users);
   res.send(result);
